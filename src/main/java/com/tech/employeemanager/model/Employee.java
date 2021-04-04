@@ -6,7 +6,7 @@ import java.io.Serializable;
 @Entity
 public class Employee implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private Long id;
     private String name;
@@ -14,15 +14,22 @@ public class Employee implements Serializable {
     private String jobTitle;
     private String phone;
     private String imageUrl;
+    private String street;
+    private String city;
     @Column(nullable = false,updatable = false)
     private String employeeCode;
 
-    public Employee(String name,String email, String jobTitle, String phone, String imageUrl, String employeeCode){
+    public Employee() { }
+
+    public Employee(String name,String email, String jobTitle, String phone, String imageUrl, String street,
+                    String city, String employeeCode){
         this.name=name;
         this.email=email;
         this.jobTitle=jobTitle;
         this.phone=phone;
         this.imageUrl=imageUrl;
+        this.street=street;
+        this.city=city;
         this.employeeCode=employeeCode;
     }
 
@@ -72,6 +79,22 @@ public class Employee implements Serializable {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getEmployeeCode() {
